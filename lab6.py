@@ -1,8 +1,10 @@
 # Gregory Roudenko
 
+password = ""
 quit = False
 
 def encode(string):
+    global password
     # loops through chars in string
     for i in range(len(string)):
         newVal = int(string[i]) + 3
@@ -11,6 +13,9 @@ def encode(string):
             newVal -= 10
         # changes the char
         string = string[:i] + str(newVal) + string[i + 1:]
+    password = string
+    print("Your password has been encoded and stored!")
+
     return string
         
 def main():
@@ -19,7 +24,9 @@ def main():
         return True
     val = input("Choose a value to " + choice + ": ")
     # evaluates whatever function you enter into the prompt
-    print(eval(choice + "(\"" + val + "\")"))
+    #stores encoded password in global password variable
+    eval(choice + "(\"" + val + "\")")
+    
 
 # loop
 if __name__ == "__main__":
