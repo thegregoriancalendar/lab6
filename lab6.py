@@ -13,6 +13,7 @@ def encode(string):
             newVal -= 10
         # changes the char
         string = string[:i] + str(newVal) + string[i + 1:]
+    #stores encoded password in global password variable
     password = string
     print("Your password has been encoded and stored!")
 
@@ -32,13 +33,19 @@ def decode(encoded):
     print(f"The encoded password is {encoded}, and the original password is {decoded}.")
         
 def main():
+    global password
     choice = input("Choose a function (encode or decode) or enter \"quit\" to quit: ")
     if choice == "quit":
         return True
-    val = input("Choose a value to " + choice + ": ")
-    # evaluates whatever function you enter into the prompt
-    #stores encoded password in global password variable
-    eval(choice + "(\"" + val + "\")")
+    if choice == "encode":
+        # encodes chosen value
+        val = input("Choose a value to encode: ")
+        encode(val)
+    else:
+        # decodes stored password
+        decode(password)
+    return False
+    
     
 
 # loop
